@@ -20,6 +20,8 @@
   margin-top: 30px;
   padding: 20px 0px;
   border-radius: 8px;
+  overflow-x: scroll;
+  justify-content: space-between;
 }
 
 .food__category button {
@@ -78,27 +80,30 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .hero__content h5 {
-    font-size: 1rem;
-  }
+  
 
   .hero__content p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     line-height: 25px;
   }
 
   .hero__title {
-    font-size: 1.5rem;
+    font-size: 3rem;
     line-height: 40px;
   }
 
   .hero__btns button {
     padding: 5px 15px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+  .hero__btns a {
+    width: 40%;
   }
 
   .hero__service p {
-    font-size: 0.7rem !important;
+    font-size: 0.8rem !important;
   }
 
   .feature__item h5 {

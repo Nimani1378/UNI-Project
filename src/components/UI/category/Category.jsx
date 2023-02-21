@@ -11,21 +11,21 @@ import "../../../styles/category.css";
 
 const categoryData = [
   {
-    display: "Fastfood",
+    display: "فست فود",
     imgUrl: categoryImg01,
   },
   {
-    display: "Pizza",
+    display: "پیتزا",
     imgUrl: categoryImg02,
   },
 
   {
-    display: "Asian Food",
+    display: "غذای ایرانی",
     imgUrl: categoryImg03,
   },
 
   {
-    display: "Row Meat",
+    display: "گوشت پخت",
     imgUrl: categoryImg04,
   },
 ];

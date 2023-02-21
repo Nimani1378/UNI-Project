@@ -32,7 +32,7 @@ const ProductCard = (props) => {
         <h5>
           <Link to={`/foods/${id}`}>{title}</Link>
         </h5>
-        <div className=" d-flex align-items-center justify-content-between ">
+        <div className=" d-flex align-items-center justify-content-center flex-wrap">
           <span className="product__price">${price}</span>
           <button className="addTOCart__btn" onClick={addToCart}>
             Add to Cart

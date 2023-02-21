@@ -11,19 +11,19 @@ import "../../styles/header.css";
 
 const nav__links = [
   {
-    display: "Home",
+    display: "خانه",
     path: "/home",
   },
   {
-    display: "Foods",
+    display: "غذا ها",
     path: "/foods",
   },
   {
-    display: "Cart",
+    display: "سبد خرید",
     path: "/cart",
   },
   {
-    display: "Contact",
+    display: "صفحه مشترک",
     path: "/contact",
   },
 ];
@@ -61,7 +61,7 @@ const Header = () => {
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
             <img src={logo} alt="logo" />
-            <h5>Tasty Treat</h5>
+            <span>زود فود</span>
           </div>
 
           {/* ======= menu ======= */}

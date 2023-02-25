@@ -147,32 +147,11 @@ const Home = () => {
       <section className="pt-0">
         <Category />
       </section>
-
-      <section>
-        <Container>
-          <Row>
-            {featureData.map((item, index) => (
-              <Col lg="4" md="6" sm="6" key={index} className="mt-5">
-                <div className="feature__item text-center px-5 py-3">
-                  <img
-                    src={item.imgUrl}
-                    alt="feature-img"
-                    className="w-25 mb-3"
-                  />
-                  <h5 className=" fw-bold mb-3">{item.title}</h5>
-                  <p>{item.desc}</p>
-                </div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
-
       <section>
         <Container>
           <Row>
             <Col lg="12" className="text-center">
-              <h2>Popular Foods</h2>
+              <h2>محصولات محبوب</h2>
             </Col>
 
             <Col lg="12">
@@ -182,7 +161,7 @@ const Home = () => {
                     } `}
                   onClick={() => setCategory("ALL")}
                 >
-                  All
+                  همه
                 </button>
                 <button
                   className={`d-flex align-items-center gap-2 ${category === "BURGER" ? "foodBtnActive" : ""
@@ -190,7 +169,7 @@ const Home = () => {
                   onClick={() => setCategory("BURGER")}
                 >
                   <img src={foodCategoryImg01} alt="" />
-                  Burger
+                  برگر
                 </button>
 
                 <button
@@ -199,7 +178,7 @@ const Home = () => {
                   onClick={() => setCategory("PIZZA")}
                 >
                   <img src={foodCategoryImg02} alt="" />
-                  Pizza
+                  پیتزا
                 </button>
 
                 <button
@@ -208,16 +187,20 @@ const Home = () => {
                   onClick={() => setCategory("BREAD")}
                 >
                   <img src={foodCategoryImg03} alt="" />
-                  Bread
+                  نان
                 </button>
               </div>
             </Col>
 
-            {allProducts.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="12" key={item.id} className="mt-5">
-                <ProductCard item={item} />
-              </Col>
-            ))}
+            {allProducts.map((item,index) => {
+              if(index<4){
+                return(
+                  <Col lg="3" md="4" sm="6" xs="12" key={item.id} className="mt-5">
+                    <ProductCard item={item} />
+                  </Col>
+                )
+              }
+            })}
           </Row>
         </Container>
       </section>
@@ -232,13 +215,10 @@ const Home = () => {
             <Col lg="6" md="6">
               <div className="why__tasty-treat">
                 <h2 className="tasty__treat-title mb-4">
-                  Why <span>Tasty Treat?</span>
+                  پیشنهاد <span>ما چیه ؟</span>
                 </h2>
                 <p className="tasty__treat-desc">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolorum, minus. Tempora reprehenderit a corporis velit,
-                  laboriosam vitae ullam, repellat illo sequi odio esse iste
-                  fugiat dolor, optio incidunt eligendi deleniti!
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
                 </p>
 
                 <ListGroup className="mt-4">

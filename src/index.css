@@ -1,8 +1,7 @@
 /* google fonts */
 
-@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Jomhuria&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Marhey:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
 
 /* reset default style */
 
@@ -16,7 +15,7 @@
 
 body {
   background: #fcfcfc;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Noto Naskh Arabic', serif;
 }
 
 h1,
@@ -26,6 +25,7 @@ h4,
 h5,
 h6 {
   font-family: 'Jomhuria', cursive;
+  margin-bottom: 0px;
 }
 
 a {
@@ -46,7 +46,7 @@ section {
 
 @media only screen and (max-width: 768px) {
   section {
-    padding: 40px 0px;
+    padding: 20px 0px;
   }
 
   h1,

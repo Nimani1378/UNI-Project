@@ -25,17 +25,18 @@ const ProductCard = (props) => {
   return (
     <div className="product__item">
       <div className="product__img">
-        <img src={image01} alt="product-img" className="w-50" />
-      </div>
-
-      <div className="product__content">
+        <Link to={`/foods/${id}`}><img src={image01} alt="product-img" className="w-75" /></Link>
         <h5>
           <Link to={`/foods/${id}`}>{title}</Link>
         </h5>
+      </div>
+
+      <div className="product__content">
+        
         <div className=" d-flex align-items-center justify-content-center flex-wrap">
-          <span className="product__price">${price}</span>
+          <span className="product__price">{price} تومان</span>
           <button className="addTOCart__btn" onClick={addToCart}>
-            Add to Cart
+            افزودن به سبد
           </button>
         </div>
       </div>

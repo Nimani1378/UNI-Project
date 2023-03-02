@@ -12,52 +12,48 @@ const Footer = () => {
       <Container>
         <Row>
           <Col lg="3" md="4" sm="6">
-            <div className=" footer__logo text-start">
-              <img src={logo} alt="logo" />
-              <h5>Tasty Treat</h5>
+            <div className=" footer__logo flex-wrap d-flex gap-3">
+              <div className="d-flex flex-column align-items-center">
+                <img className="logo_img" src={logo} alt="logo" />
+                <h2>زودفود</h2>
+              </div>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt pariatur accusamus
+              با استفاده از وبسایت و اپلیکیشن سفارش آنلاین غذای زودفود شما میتونید به راحتی و در سریع ترین زمان ممکن غذای مورد علاقه‌ی خودتون رو سفارش بدید.
               </p>
             </div>
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className="footer__title">Delivery Time</h5>
+            <h3 className="footer__title">ساعات کار</h3>
             <ListGroup className="deliver__time-list">
               <ListGroupItem className=" delivery__time-item border-0 ps-0">
-                <span>Sunday - Thursday</span>
-                <p>10:00am - 11:00pm</p>
-              </ListGroupItem>
-
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
-                <span>Friday - Saturday</span>
-                <p>Off day</p>
+                <span>شنبه - پنج شنبه</span>
+                <p>10 صبح تا 11 شب</p>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className="footer__title">Contact</h5>
+            <h5 className="footer__title">تماس با ما</h5>
             <ListGroup className="deliver__time-list">
               <ListGroupItem className=" delivery__time-item border-0 ps-0">
-                <p>Location: ZindaBazar, Sylhet-3100, Bangladesh</p>
+                <p>اصفهان. میدان امام حسین. خیابان طالقانی</p>
               </ListGroupItem>
               <ListGroupItem className=" delivery__time-item border-0 ps-0">
-                <span>Phone: 01712345678</span>
+                <span>تلفن : 0313554395</span>
               </ListGroupItem>
 
               <ListGroupItem className=" delivery__time-item border-0 ps-0">
-                <span>Email: example@gmail.com</span>
+                <span>فکس : 031352955</span>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className="footer__title">Newsletter</h5>
-            <p>Subscribe our newsletter</p>
+            <h5 className="footer__title">خبرنامه</h5>
+            <p>با وارد کردن ایمیل خود عضو شوید</p>
             <div className="newsletter">
-              <input type="email" placeholder="Enter your email" />
+              <input type="email" placeholder="ایمیل خود را وارد کنید" />
               <span>
                 <i class="ri-send-plane-line"></i>
               </span>
@@ -68,38 +64,37 @@ const Footer = () => {
         <Row className="mt-5">
           <Col lg="6" md="6">
             <p className="copyright__text">
-              Copyright - 2022, website made by Muhibur Rahman. All Rights
-              Reserved.
+              حق کپی رایت این وبسایت متعلق به شرکت زود فود میباشد
             </p>
           </Col>
           <Col lg="6" md="6">
             <div className="social__links d-flex align-items-center gap-4 justify-content-end">
-              <p className="m-0">Follow: </p>
+              <p className="m-0">مارا دنبال کنید</p>
               <span>
                 {" "}
-                <Link to="https://www.facebook.com/muhib160">
+                
                   <i class="ri-facebook-line"></i>
-                </Link>{" "}
+                {" "}
               </span>
 
               <span>
-                <Link to="https://github.com/muhib160">
+                
                   <i class="ri-github-line"></i>
-                </Link>
+                
               </span>
 
               <span>
                 {" "}
-                <Link to=" https://www.youtube.com/c/MuhibsTechDiary">
+                
                   <i class="ri-youtube-line"></i>
-                </Link>{" "}
+                
               </span>
 
               <span>
                 {" "}
-                <Link to=" https://www.linkedin.com/in/muhib160/">
+                
                   <i class="ri-linkedin-line"></i>
-                </Link>{" "}
+                {" "}
               </span>
             </div>
           </Col>

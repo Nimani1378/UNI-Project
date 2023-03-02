@@ -37,12 +37,12 @@ const Carts = () => {
         </div>
 
         <div className="cart__bottom d-flex align-items-center justify-content-between">
-          <h6>
-            Subtotal : <span>${totalAmount}</span>
-          </h6>
+          <h3>
+            کل : <span>{totalAmount} تومان</span>
+          </h3>
           <button>
             <Link to="/checkout" onClick={toggleCart}>
-              Checkout
+              ادامه پرداخت
             </Link>
           </button>
         </div>

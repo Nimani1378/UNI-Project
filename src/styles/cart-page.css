@@ -13,7 +13,11 @@ th {
 .cart__item-del i {
   cursor: pointer;
 }
-
+.cart__page-btn{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
 .cart__page-btn button a:hover {
   color: #fff;
 }

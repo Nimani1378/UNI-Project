@@ -94,32 +94,32 @@ const FoodDetails = () => {
                 <h2 className="product__title mb-3">{title}</h2>
                 <p className="product__price">
                   {" "}
-                  Price: <span>${price}</span>
+                  قیمت: <span>{price} تومان</span>
                 </p>
                 <p className="category mb-5">
-                  Category: <span>{category}</span>
+                  دسته بندی: <span>{category}</span>
                 </p>
 
                 <button onClick={addItem} className="addTOCart__btn">
-                  Add to Cart
+                  افزودن به سبد خرید
                 </button>
               </div>
             </Col>
 
             <Col lg="12">
               <div className="tabs d-flex align-items-center gap-5 py-3">
-                <h6
+                <h3
                   className={` ${tab === "desc" ? "tab__active" : ""}`}
                   onClick={() => setTab("desc")}
                 >
-                  Description
-                </h6>
-                <h6
+                  توضیحات
+                </h3>
+                <h3
                   className={` ${tab === "rev" ? "tab__active" : ""}`}
                   onClick={() => setTab("rev")}
                 >
-                  Review
-                </h6>
+                  نظرات
+                </h3>
               </div>
 
               {tab === "desc" ? (
@@ -175,7 +175,7 @@ const FoodDetails = () => {
                     </div>
 
                     <button type="submit" className="addTOCart__btn">
-                      Submit
+                      ثبت
                     </button>
                   </form>
                 </div>
@@ -183,14 +183,17 @@ const FoodDetails = () => {
             </Col>
 
             <Col lg="12" className="mb-5 mt-4">
-              <h2 className="related__Product-title">You might also like</h2>
+              <h2 className="related__Product-title">محصولات مرتبط</h2>
             </Col>
-
-            {relatedProduct.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="6" className="mb-4" key={item.id}>
-                <ProductCard item={item} />
-              </Col>
-            ))}
+            <Col xs="12" className="px-0">
+              <div className="related_Slider">
+              {relatedProduct.map((item) => (
+                <div className="related__Product-card" key={item.id}>
+                  <ProductCard item={item} />
+                </div>
+              ))}
+              </div>
+            </Col>
           </Row>
         </Container>
       </section>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Container, Row, Col } from "reactstrap";
 
@@ -11,22 +12,26 @@ import "../../../styles/category.css";
 
 const categoryData = [
   {
-    display: "فست فود",
+    display: "برگر",
     imgUrl: categoryImg01,
+    cat:'Burger'
   },
   {
     display: "پیتزا",
     imgUrl: categoryImg02,
+    cat:'Pizza'
+  },
+
+  {
+    display: "نان",
+    imgUrl: categoryImg03,
+    cat:'Bread'
   },
 
   {
     display: "غذای ایرانی",
-    imgUrl: categoryImg03,
-  },
-
-  {
-    display: "گوشت پخت",
     imgUrl: categoryImg04,
+    cat:'Iranian'
   },
 ];
 
@@ -36,12 +41,14 @@ const Category = () => {
       <Row>
         {categoryData.map((item, index) => (
           <Col lg="3" md="4" sm="6" xs="6" className="mb-4" key={index}>
+            <Link to={`/foods/${item.cat}`}>
             <div className="category__item d-flex align-items-center gap-3">
               <div className="category__img">
                 <img src={item.imgUrl} alt="category__item" />
               </div>
               <h6>{item.display}</h6>
             </div>
+            </Link>
           </Col>
         ))}
       </Row>

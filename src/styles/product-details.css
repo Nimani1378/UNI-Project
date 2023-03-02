@@ -2,6 +2,24 @@
   padding-left: 50px;
 }
 
+.related_Slider{
+  width: 100%;
+  background-color: #df2020;
+  display: flex;
+  overflow-x: scroll;
+  gap : 7px;
+  padding: 12px;
+}
+
+.related__Product-card{
+  flex: 1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+}
+
 .product__price {
   display: flex;
   align-items: center;
@@ -100,7 +118,8 @@
   }
   .product__price,
   .product__price span {
-    font-size: 1rem;
+    font-family: 'Jomhuria', cursive;
+    font-size: 1.6rem;
   }
   .category,
   .category span {

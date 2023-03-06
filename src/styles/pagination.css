@@ -8,6 +8,7 @@
   column-gap: 0.5rem;
   list-style: none;
   margin-top: 30px;
+  padding: 0;
 }
 
 .paginationBttns a {

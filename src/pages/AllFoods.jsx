@@ -19,7 +19,7 @@ const AllFoods = () => {
 
   const {cat} = useParams();
   const [category,setCategoty] = useState(cat)
-  const searchedProduct = products.filter((item)=>(item.category===category)).filter((item) => {
+  const searchedProduct = products.filter((item)=>(category===undefined ? true : (item.category===category))).filter((item) => {
     if (searchTerm.value === "") {
       return item;
     }
@@ -49,11 +49,12 @@ const AllFoods = () => {
 
   return (
     <Helmet title="All-Foods">
+      {console.log(category)}
       <CommonSection title="لیست محصولات" />
       <section>
         <Container>
           <Row>
-            <Col lg="6" md="6" sm="6" xs="12">
+            <Col lg="6" md="6" sm="6" xs="12" className="px-3">
               <div className="search__widget d-flex align-items-center justify-content-between ">
                 <input
                   type="text"
@@ -66,7 +67,7 @@ const AllFoods = () => {
                 </span>
               </div>
             </Col>
-            <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
+            <Col lg="6" md="6" sm="6" xs="12" className="mb-5 px-3" >
               <div className="sorting__widget text-end">
                 <select className="w-50">
                   <option>پیش فرض</option>
@@ -77,7 +78,7 @@ const AllFoods = () => {
             </Col>
 
             {displayPage.length>0 ? (displayPage.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
+              <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-0 p-0">
                 <ProductCard item={item} />
               </Col>
             ))) : (

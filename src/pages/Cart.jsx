@@ -13,22 +13,22 @@ const Cart = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   return (
     <Helmet title="Cart">
-      <CommonSection title="Your Cart" />
+      <CommonSection title="سبد خرید" />
       <section>
         <Container>
           <Row>
             <Col lg="12">
               {cartItems.length === 0 ? (
-                <h5 className="text-center">Your cart is empty</h5>
+                <h5 className="text-center">سبد خرید شما خالیست</h5>
               ) : (
                 <table className="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Product Title</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
+                      <th>تصویر</th>
+                      <th>عنوان محصول</th>
+                      <th>قیمت</th>
+                      <th>تعداد</th>
+                      <th>حذف</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -41,16 +41,16 @@ const Cart = () => {
 
               <div className="mt-4">
                 <h6>
-                  Subtotal: $
+                  مبلغ کل
                   <span className="cart__subtotal">{totalAmount}</span>
                 </h6>
-                <p>Taxes and shipping will calculate at checkout</p>
+                <p>مالیات و هزینه ارسال محاسبه شده است</p>
                 <div className="cart__page-btn">
                   <button className="addTOCart__btn py-2">
-                    <Link to="/foods">Continue Shopping</Link>
+                    <Link to="/foods">بازگشت به فروشگاه</Link>
                   </button>
                   <button className="addTOCart__btn py-2">
-                    <Link to="/checkout">Proceed to checkout</Link>
+                    <Link to="/checkout">ادامه</Link>
                   </button>
                 </div>
               </div>
@@ -75,8 +75,8 @@ const Tr = (props) => {
         <img src={image01} alt="" />
       </td>
       <td className="text-center">{title}</td>
-      <td className="text-center">${price}</td>
-      <td className="text-center">{quantity}px</td>
+      <td className="text-center">{price} تومان</td>
+      <td className="text-center">{quantity}</td>
       <td className="text-center cart__item-del">
         <i class="ri-delete-bin-line" onClick={deleteItem}></i>
       </td>

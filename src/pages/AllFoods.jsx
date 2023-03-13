@@ -82,8 +82,8 @@ const AllFoods = () => {
             <Row>
             <Col lg="6" md="6" sm="6" xs="12" className=" mb-4 px-3" >
                 <div className="sorting__widget text-end">
-                  <select className="w-50" value={category} onChange={(e)=>{setCategoty(e.target.value)}}>
-                    <option selected value='همه'>پیش فرض</option>
+                  <select defaultValue={'همه'} className="w-50" value={category} onChange={(e)=>{setCategoty(e.target.value)}}>
+                    <option value='همه'>پیش فرض</option>
                     <option value="پیتزا">پیتزا</option>
                     <option value="برگر">برگر</option>
                     <option value="غذای_سنتی">غذای سنتی</option>

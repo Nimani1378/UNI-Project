@@ -6,41 +6,39 @@ import { Navigate } from "react-router-dom";
 import "../styles/checkout.css";
 
 const Checkout = () => {
-  
+
   const [loading, setLoading] = useState(true)
-
-
-  
-  
-
-  let session1 = null;
+  const [session,setSession] = useState(null)
 
   useEffect(async () => {
     window.scrollTo(0, 0);
-    const isLoaded = async()=>{
+    const isLoaded = async () => {
       setLoading(true);
       supabase.auth.getSession().then(({ data: { session } }) => {
-        session1 = session;
-        setLoading(false)
+        setSession(session);
+        setLoading(false);
       }, [])
       supabase.auth.onAuthStateChange((_event, session) => {
-        session1 = session;
+        setSession(session);
         setLoading(false)
       })
-      isLoaded();
     }
+    isLoaded();
   }, [])
 
-  if(loading){
+  if (loading) {
     return (
       <div>بارگذاری</div>
     )
   }
-  else{
-    return(
+  else {
+    return (
       <>
-      looaded
-      {console.log(session1)}
+        {session ? (
+          <CheckOutForm/>
+        ):(
+          <Navigate to={'/register'} replace={true}/>
+        )}
       </>
     )
   }

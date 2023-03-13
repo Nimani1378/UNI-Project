@@ -1,0 +1,55 @@
+.container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.form-widget{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.nameInputField{
+    padding: 5px 8px;
+    border-radius: 8px;
+    width: 50%;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.name_inputField:focus{
+    outline: none;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+.nameLabel{
+    width: 50%;
+}
+.avatar-container{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(237, 237, 237);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+}
+.input_div{
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(231, 231, 231);
+    padding: 8px;
+    border-radius: 8px;
+    align-items: center;
+    font-size: small;
+}
+.update_button{
+    padding: 8px;
+    border: none;
+    background-color: rgb(227, 47, 47);
+    border-radius: 8px;
+    color: white;
+    font-size: small;
+}

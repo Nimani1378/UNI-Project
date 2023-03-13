@@ -40,8 +40,8 @@ const Carts = () => {
           <h3>
             کل : <span>{totalAmount} تومان</span>
           </h3>
-          <button>
-            <Link to="/checkout" onClick={toggleCart}>
+          <button onClick={toggleCart}>
+            <Link to="/checkout">
               ادامه پرداخت
             </Link>
           </button>

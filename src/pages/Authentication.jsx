@@ -5,6 +5,7 @@ import Auth from '../components/Authentication/Auth'
 import Account from '../components/Authentication/Account'
 import CommonSection from '../components/UI/common-section/CommonSection'
 
+
 export default function Authentication() {
   const [session, setSession] = useState(null)
 
@@ -20,9 +21,9 @@ export default function Authentication() {
   }, [])
 
   return (
-      <div>
-        <CommonSection title='حساب کاربری'/>
-        {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
-      </div>
+    <div>
+      <CommonSection title='حساب کاربری' />
+      {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
+    </div>
   )
 }

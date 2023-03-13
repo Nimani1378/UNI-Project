@@ -127,7 +127,7 @@ const Form = ({ foods, session, getUserFoods }) => {
                             <select defaultValue={formInputs.category} onChange={(e) => { setFormInputs({ ...formInputs, category: e.target.value }) }} class="form-select form-select-sm" id="category" aria-label="Default select example">
                                 <option value="پیتزا">پیتزا</option>
                                 <option value="همبرگر">همبرگر</option>
-                                <option value="نان">نان</option>
+                                <option value="غذای_سنتی">غذای سنتی</option>
                             </select>
                         </div>
                         <div class="mb-1 w-50 px-1">

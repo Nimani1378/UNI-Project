@@ -14,24 +14,24 @@ const categoryData = [
   {
     display: "برگر",
     imgUrl: categoryImg01,
-    cat:'Burger'
+    cat:'برگر'
   },
   {
     display: "پیتزا",
     imgUrl: categoryImg02,
-    cat:'Pizza'
+    cat:'پیتزا'
   },
 
   {
-    display: "نان",
+    display: "غذای سنتی",
     imgUrl: categoryImg03,
-    cat:'Bread'
+    cat:'غذای_سنتی'
   },
 
   {
-    display: "غذای ایرانی",
+    display: "دسر",
     imgUrl: categoryImg04,
-    cat:'Iranian'
+    cat:'دسر'
   },
 ];
 

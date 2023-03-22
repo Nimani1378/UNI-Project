@@ -9,6 +9,12 @@ const Checkout = () => {
 
   const [loading, setLoading] = useState(true)
   const [session,setSession] = useState(null)
+  const [userInfo,setUserInfo] = useState({
+    name:'',
+    LastName:'',
+    Phone:'',
+    Address:''
+  })
 
   useEffect(async () => {
     window.scrollTo(0, 0);
@@ -26,6 +32,36 @@ const Checkout = () => {
     isLoaded();
   }, [])
 
+  const getProfile = async (ss) => {
+    try {
+      setLoading(true)
+      const { user } = ss
+
+      let { data, error, status } = await supabase
+        .from('users')
+        .select(`name, LastName, Phone, Address`)
+        .eq('id', user.id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setUserInfo({
+          name: data.name,
+          lastname: data.LastName,
+          phone: data.Phone,
+          address: data.Address
+        })
+      }
+    } catch (error) {
+      alert(error.massage)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   if (loading) {
     return (
       <div>بارگذاری</div>
@@ -35,7 +71,7 @@ const Checkout = () => {
     return (
       <>
         {session ? (
-          <CheckOutForm/>
+          <CheckOutForm session={session} />
         ):(
           <Navigate to={'/register'} replace={true}/>
         )}

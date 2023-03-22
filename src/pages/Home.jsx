@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import Helmet from "../components/Helmet/Helmet.js";
-import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 
-import heroImg from "../assets/images/hero.png";
 import "../styles/hero-section.css";
 
 import { Link } from "react-router-dom";
@@ -23,12 +22,6 @@ import foodCategoryImg02 from "../assets/images/pizza.png";
 import foodCategoryImg03 from "../assets/images/bread.png";
 
 import ProductCard from "../components/UI/product-card/ProductCard.jsx";
-
-import whyImg from "../assets/images/location.png";
-
-import networkImg from "../assets/images/network.png";
-
-import TestimonialSlider from "../components/UI/slider/TestimonialSlider.jsx";
 
 const featureData = [
   {
@@ -90,6 +83,8 @@ const Home = () => {
       setAllProducts(filteredProducts);
     }
   }, [category]);
+
+
 
   return (
     <Helmet title="Home">

@@ -12,6 +12,12 @@
     padding: 4px 8px;
     border-radius: 8px;
 }
+.foods_rows{
+  cursor: pointer;
+}
+.foods_rows:hover{
+  background-color: rgb(255, 207, 207);
+}
 ::-webkit-scrollbar {
     width: 4px;
   }

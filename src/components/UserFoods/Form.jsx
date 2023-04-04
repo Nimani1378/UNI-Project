@@ -84,7 +84,7 @@ const Form = ({ foods, session, getUserFoods }) => {
                             </thead>
                             <tbody>
                                 {foods.map((item) => (
-                                    <tr onClick={() => {
+                                    <tr className="foods_rows" onClick={() => {
                                         setUpdate(true); setFormInputs({
                                             id: item.id,
                                             name: item.name,

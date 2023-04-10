@@ -2,15 +2,16 @@ import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../common-section/CommonSection";
 import Helmet from "../../Helmet/Helmet";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { supabase } from "../../../supabaseClient";
+import { cartActions } from "../../../store/shopping-cart/cartSlice";
 
 
 const CheckOutForm = ({ session }) => {
     const [loading, setLoading] = useState(true)
-    const [changed, setChanged] = useState(false)
+    const dispatch = useDispatch();
     const [userInfo, setUserInfo] = useState(null)
-    const shippingInfo = [];
+    const cartProducts = useSelector((state) => state.cart.cartItems);
     const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
     const shippingCost = 30;
 
@@ -50,7 +51,14 @@ const CheckOutForm = ({ session }) => {
         getProfile()
     }, [session])
 
-
+    const handlesubmit = ()=>{
+       alert('سفارش با موفقیت انجام شد')
+       if(cartProducts.length>0){
+        cartProducts.map((item)=>{
+            dispatch(cartActions.deleteItem(item.id));
+        })
+       }
+    }
     return (
         <>
             {loading ? (
@@ -102,10 +110,11 @@ const CheckOutForm = ({ session }) => {
                                                 onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })}
                                             />
                                         </div>
-                                        <button type="submit" className="addTOCart__btn">
+                                        
+                                    </form>
+                                    <button onClick={handlesubmit} className="addTOCart__btn">
                                             پرداخت
                                         </button>
-                                    </form>
                                 </Col>
 
                                 <Col lg="4" md="6">

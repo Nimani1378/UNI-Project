@@ -142,63 +142,6 @@ const Home = () => {
       <section className="pt-0">
         <Category />
       </section>
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12" className="text-center">
-              <h2>محصولات محبوب</h2>
-            </Col>
-
-            <Col lg="12">
-              <div className="food__category d-flex align-items-center">
-                <button
-                  className={`all__btn  ${category === "ALL" ? "foodBtnActive" : ""
-                    } `}
-                  onClick={() => setCategory("ALL")}
-                >
-                  همه
-                </button>
-                <button
-                  className={`d-flex align-items-center gap-2 ${category === "BURGER" ? "foodBtnActive" : ""
-                    } `}
-                  onClick={() => setCategory("BURGER")}
-                >
-                  <img src={foodCategoryImg01} alt="" />
-                  برگر
-                </button>
-
-                <button
-                  className={`d-flex align-items-center gap-2 ${category === "PIZZA" ? "foodBtnActive" : ""
-                    } `}
-                  onClick={() => setCategory("PIZZA")}
-                >
-                  <img src={foodCategoryImg02} alt="" />
-                  پیتزا
-                </button>
-
-                <button
-                  className={`d-flex align-items-center gap-2 ${category === "BREAD" ? "foodBtnActive" : ""
-                    } `}
-                  onClick={() => setCategory("BREAD")}
-                >
-                  <img src={foodCategoryImg03} alt="" />
-                  نان
-                </button>
-              </div>
-            </Col>
-
-            {allProducts.map((item,index) => {
-              if(index<4){
-                return(
-                  <Col lg="3" md="4" sm="6" xs="12" key={item.id} className="mt-5">
-                    <ProductCard item={item} />
-                  </Col>
-                )
-              }
-            })}
-          </Row>
-        </Container>
-      </section>
     </Helmet>
   );
 };

@@ -85,7 +85,7 @@ const AllFoods = () => {
                   <select defaultValue={'همه'} className="w-50" value={category} onChange={(e)=>{setCategoty(e.target.value)}}>
                     <option value='همه'>پیش فرض</option>
                     <option value="پیتزا">پیتزا</option>
-                    <option value="برگر">برگر</option>
+                    <option value="همبرگر">برگر</option>
                     <option value="غذای_سنتی">غذای سنتی</option>
                     <option value="دسر">دسر</option>
                   </select>

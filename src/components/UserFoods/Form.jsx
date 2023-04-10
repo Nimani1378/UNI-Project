@@ -1,8 +1,11 @@
 import { useState } from "react"
 import '../../styles/userAddFoodForm.css'
 import { supabase } from '../../supabaseClient'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Form = ({ foods, session, getUserFoods }) => {
+    
     const [update, setUpdate] = useState(false)
     const [formInputs, setFormInputs] = useState({
         id: null,
@@ -10,8 +13,10 @@ const Form = ({ foods, session, getUserFoods }) => {
         price: '',
         des: '',
         count: '',
-        category: 'پیتزا'
+        category: 'پیتزا',
+        image: null
     })
+    const [imageFile, setImageFile] = useState(null)
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (update) {
@@ -27,7 +32,8 @@ const Form = ({ foods, session, getUserFoods }) => {
                         price: '',
                         des: '',
                         count: '',
-                        category: 'پیتزا'
+                        category: 'پیتزا',
+                        image: null
                     });
                     setUpdate(false);
                     alert('به روزرسانی موفقیت آمیز بود')
@@ -42,26 +48,38 @@ const Form = ({ foods, session, getUserFoods }) => {
                 if (error) {
                     throw error
                 } else {
-                    setFormInputs({
-                        id: null,
-                        name: '',
-                        price: '',
-                        des: '',
-                        count: '',
-                        category: 'پیتزا'
-                    });
-                    alert('محصول با موفقیت اضافه شد');
-                    try {
+                    const { error } = await supabase
+                        .storage
+                        .from('images')
+                        .upload(formInputs.image, imageFile)
+                    if (error) { throw error }
+                    else {
+                        setFormInputs({
+                            id: null,
+                            name: '',
+                            price: '',
+                            des: '',
+                            count: '',
+                            category: 'پیتزا',
+                            image: null
+                        });
+                        alert('محصول با موفقیت اضافه شد');
                         await getUserFoods();
-                    } catch (error) {
-                        console.log(error.message)
                     }
                 }
             } catch (error) {
                 alert(error.message)
             }
+
         }
     }
+    const handleImage = (e) => {
+        console.log(e.target.files[0]);
+        setImageFile(e.target.files[0]);
+        let uid = uuidv4();
+        setFormInputs({ ...formInputs, image: session.user.id+'/'+uid })
+    }
+
     return (
         <div>
             <div className="my-4">
@@ -120,7 +138,6 @@ const Form = ({ foods, session, getUserFoods }) => {
                             <textarea value={formInputs.des} onChange={(e) => { setFormInputs({ ...formInputs, des: e.target.value }) }} class="form-control form-control-sm" id="dec" rows="3" placeholder="توضیحات"></textarea>
                         </div>
                         <div class="mb-2 w-50 px-1">
-
                             <input value={formInputs.count} onChange={(e) => { setFormInputs({ ...formInputs, count: e.target.value }) }} type="number" class="form-control form-control-sm" id="count" placeholder="تعداد" />
                         </div>
                         <div class="mb-2 w-50 px-1">
@@ -129,6 +146,9 @@ const Form = ({ foods, session, getUserFoods }) => {
                                 <option value="همبرگر">همبرگر</option>
                                 <option value="غذای_سنتی">غذای سنتی</option>
                             </select>
+                        </div>
+                        <div class="mb-1 w-100 px-1">
+                            <input class="form-control form-control-sm" type="file" accept="image/png, image/jpeg" id="formFileMultiple" onChange={(e) => { handleImage(e) }} />
                         </div>
                         <div class="mb-1 w-50 px-1">
                             <button type="submit" class="btn btn-success btn-sm">{update ? 'به روزرسانی' : 'ثبت غذا'}</button>
@@ -143,7 +163,8 @@ const Form = ({ foods, session, getUserFoods }) => {
                                             price: '',
                                             des: '',
                                             count: '',
-                                            category: 'پیتزا'
+                                            category: 'پیتزا',
+                                            image:null
                                         })
                                     }} class="btn btn-dark btn-sm w-100">لغو</button>
                                 </div>
@@ -165,7 +186,8 @@ const Form = ({ foods, session, getUserFoods }) => {
                                                     price: '',
                                                     des: '',
                                                     count: '',
-                                                    category: 'پیتزا'
+                                                    category: 'پیتزا',
+                                                    image:null
                                                 });
                                                 await getUserFoods();
                                                 alert('حذف محصول انجام شد')

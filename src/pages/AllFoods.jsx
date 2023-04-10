@@ -36,7 +36,7 @@ const AllFoods = () => {
 
   let searchedProduct = [];
   if(data){
-      searchedProduct = data.filter((item)=>(item.count>0)).filter((item) => (category === undefined ? true : (item.category === category))).filter((item) => {
+      searchedProduct = data.filter((item)=>(item.count>0)).filter((item) => (((category === undefined)||(category==="همه")) ? true : (item.category === category))).filter((item) => {
       if (searchTerm.value === "") {
         return item;
       }

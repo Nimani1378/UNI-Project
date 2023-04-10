@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../../supabaseClient'
 import '../../styles/Account.css'
 import Form from '../UserFoods/Form'
+
 const Account = ({ session }) => {
   const [loading, setLoading] = useState(true)
   const [changed, setChanged] = useState(false)

@@ -8,15 +8,16 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
 
 const ProductCard = (props) => {
-  const { id, title, image01, price } = props.item;
+  const imageUrl = 'https://fvhcvimvvacsyotpdkhr.supabase.co/storage/v1/object/public/images/';
+  const { id, name, image, price } = props.item;
   const dispatch = useDispatch();
 
   const addToCart = () => {
     dispatch(
       cartActions.addItem({
         id,
-        title,
-        image01,
+        title:name,
+        image01:imageUrl+image,
         price,
       })
     );
@@ -25,9 +26,9 @@ const ProductCard = (props) => {
   return (
     <div className="product__item">
       <div className="product__img">
-        <Link to={`/product/${id}`}><img src={image01} alt="product-img" className="w-75" /></Link>
+        <Link to={`/product/${id}`}><img src={imageUrl+image} alt="product-img" className="w-75" /></Link>
         <h5>
-          <Link to={`/product/${id}`}>{title}</Link>
+          <Link to={`/product/${id}`}>{name}</Link>
         </h5>
       </div>
 

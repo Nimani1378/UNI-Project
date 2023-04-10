@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-import products from "../assets/fake-data/products";
+import { supabase } from "../supabaseClient";
 import { useParams } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
@@ -14,26 +13,34 @@ import "../styles/product-details.css";
 import ProductCard from "../components/UI/product-card/ProductCard";
 
 const FoodDetails = () => {
+  const imageUrl = 'https://fvhcvimvvacsyotpdkhr.supabase.co/storage/v1/object/public/images/';
   const [tab, setTab] = useState("desc");
+  const [product,setProduct] = useState({
+    name:null,
+    des:null,
+    price:null,
+    image:null,
+    category:null
+  })
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [reviewMsg, setReviewMsg] = useState("");
+  const [relatedProduct,setRelated] = useState(null)
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const product = products.find((product) => product.id === id);
-  const [previewImg, setPreviewImg] = useState(product.image01);
-  const { title, price, category, desc, image01 } = product;
+  
+  
 
-  const relatedProduct = products.filter((item) => category === item.category);
+  //const relatedProduct = products.filter((item) => category === item.category);
 
   const addItem = () => {
     dispatch(
       cartActions.addItem({
-        id,
-        title,
-        price,
-        image01,
+        id:product.id,
+        title:product.name,
+        price:product.price,
+        image01:imageUrl+product.image,
       })
     );
   };
@@ -44,60 +51,68 @@ const FoodDetails = () => {
     console.log(enteredName, enteredEmail, reviewMsg);
   };
 
+  const getRelatedProduct = async(cat)=>{
+    try{
+      const { data, error } = await supabase
+          .from('foods')
+          .select('*')
+          .eq('category', cat);
+        if(error){throw error}
+        else{
+          setRelated(data)
+        }
+    } catch(error){
+      alert(error.message)
+    }
+  }
+
   useEffect(() => {
-    setPreviewImg(product.image01);
-  }, [product]);
+    const getDetails = async (id) => {
+      try {
+        const { data, error } = await supabase
+          .from('foods')
+          .select('*')
+          .eq('id', id);
+        if(error){
+          throw error
+        }else{
+          getRelatedProduct(data[0].category)
+          setProduct(data[0]);
+        }
+
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+    getDetails(id);
+  }, [id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [product]);
+  }, [id]);
 
   return (
     <Helmet title="Product-details">
-      <CommonSection title={title} />
+      <CommonSection title={product.name} />
 
       <section>
         <Container>
           <Row>
-            <Col lg="2" md="2">
-              <div className="product__images ">
-                <div
-                  className="img__item mb-3"
-                  onClick={() => setPreviewImg(product.image01)}
-                >
-                  <img src={product.image01} alt="" className="w-50" />
-                </div>
-                <div
-                  className="img__item mb-3"
-                  onClick={() => setPreviewImg(product.image02)}
-                >
-                  <img src={product.image02} alt="" className="w-50" />
-                </div>
-
-                <div
-                  className="img__item"
-                  onClick={() => setPreviewImg(product.image03)}
-                >
-                  <img src={product.image03} alt="" className="w-50" />
-                </div>
-              </div>
-            </Col>
-
             <Col lg="4" md="4">
               <div className="product__main-img">
-                <img src={previewImg} alt="" className="w-100" />
+                <img src={imageUrl+product.image} alt="" className="w-100" />
               </div>
             </Col>
 
             <Col lg="6" md="6">
               <div className="single__product-content">
-                <h2 className="product__title mb-3">{title}</h2>
+                <h2 className="product__title mb-3">{product.name}</h2>
                 <p className="product__price">
                   {" "}
-                  قیمت: <span>{price} تومان</span>
+                  قیمت: <span>{product.price} تومان</span>
                 </p>
                 <p className="category mb-5">
-                  دسته بندی: <span>{category}</span>
+                  دسته بندی: <span>{product.category}</span>
                 </p>
 
                 <button onClick={addItem} className="addTOCart__btn">
@@ -124,7 +139,7 @@ const FoodDetails = () => {
 
               {tab === "desc" ? (
                 <div className="tab__content">
-                  <p>{desc}</p>
+                  <p>{product.des}</p>
                 </div>
               ) : (
                 <div className="tab__form mb-3">
@@ -182,19 +197,20 @@ const FoodDetails = () => {
               )}
             </Col>
 
-            <Col lg="12" className="mb-5 mt-4">
+            <Col lg="12" className="mb-2 mt-2">
               <h2 className="related__Product-title">محصولات مرتبط</h2>
             </Col>
-            <Col xs="12" className="px-0">
-              <div className="related_Slider">
-              {relatedProduct.map((item) => (
-                <div className="related__Product-card" key={item.id}>
-                  <ProductCard item={item} />
-                </div>
-              ))}
-              </div>
-            </Col>
+            
           </Row>
+          {relatedProduct && (
+              <div className="related_Slider">
+                {relatedProduct.map((item) => (
+                  <div className="related__Product-card" key={item.id}>
+                    <ProductCard item={item} />
+                  </div>
+                ))}
+              </div>
+            )}
         </Container>
       </section>
     </Helmet>
